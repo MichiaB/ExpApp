@@ -9,7 +9,16 @@
     <h1> Home Page </h1>
     <a href="/views/about.ejs"> Home Page</a>
 
-    <img src = "/"
+    <img src = "public/img/cat.webp"> 
+
+        <button id="downloadBtn"> Download </button>
+    <script>
+        const downloadBtn = document.getElementById ("downloadBtn");
+
+        downloadBtn.addEventListener("click", function (){
+            window.location.href = "/download"; 
+        });
+    </script>
 
     <form>
         <input  type="text" name="name"  role="name"
