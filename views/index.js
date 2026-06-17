@@ -1,5 +1,6 @@
-const express = require("express");
+import express from "express";
 const app = express();
+import morgan from "morgan";
 const port = 3000; 
 
 
