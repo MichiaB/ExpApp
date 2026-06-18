@@ -8,11 +8,26 @@ app.use(express.static("public"));
 
 
 
+app.get("/download", (req, res) => {
+    const filePath = path.resolve("public/img/cat.webp.jpg");
 
+    res.download(filePath, (err) => {
+        if (err) {
+            console.log("Download error:", err); 
+            res.status(500).send("File could not be downloaded.")
+        }
+    });
+});
 
 app.listen(port, () => {
     console.log (`Server Listening on port: ${port}.`);
 });
+
+
+app.get("/", (req, res) => {
+    res.render("home.ejs");
+});
+
 
 app.get("/about/:name", (req, res) => {
     res.render("about", {
@@ -20,9 +35,6 @@ app.get("/about/:name", (req, res) => {
     })
 })
 
-app.get("/download", (req, res) => {
-      res.download("./public/img/cat.webp.jpg", [cat.webp.jpg], []);
-})
 
 
 
@@ -30,5 +42,5 @@ app.get("/download", (req, res) => {
 app.post("/home.ejs", (req, res) =>{
     console.log(req.body);
    res.send(`"Success!" ${req.params.home} `);
-})
+});
 
